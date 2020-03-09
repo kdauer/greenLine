@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// var moment = require("moment");
 import moment from "moment";
 import { Link } from "react-router-dom";
 moment().format();

@@ -33,17 +33,10 @@ export class SearchForm extends Component {
 
   handleChange = e => {
     const date = e.target.value;
-    // console.log(date);
     this.setState({
       date: date
     });
   };
-  // searchFavorites=e=>{
-  //   this.setState({
-  //     toId:e.originId,
-  //     toId:this.props.
-  //   })
-  // }
 
   searchPrice = state => {
     this.setState({
@@ -55,22 +48,6 @@ export class SearchForm extends Component {
 
     let newToId = state.toId;
     if (!newToId) newToId = state.to;
-    // for(let i=0;i<3;i++){
-    //   switch (i) {
-    //     case 0: date=state.date.slice(8,10);
-    //     case value2:
-    //       //Statements executed when the
-    //       //result of expression matches value2
-
-    //     case valueN:
-    //       //Statements executed when the
-    //       //result of expression matches valueN
-
-    //     default:
-    //       //Statements executed when none of
-    //       //the values match the value of the expression
-
-    //   }
     const getPrices = axios.get(
       "/api/price?date=" +
         state.date.slice(0, 16) +
@@ -79,7 +56,6 @@ export class SearchForm extends Component {
         "&toId=" +
         newToId
     );
-    // console.log("date format", state.date.slice(0, 16));
 
     const firstPrice = axios.get("/api/firstPrice");
     this.setState(
@@ -91,7 +67,6 @@ export class SearchForm extends Component {
       () => {
         this.props.resultListSetTrue();
         Promise.all([getPrices, firstPrice]).then(([allRes, firstClass]) => {
-          console.log(allRes.data.length);
           this.setState(
             {
               resultData: allRes.data,
@@ -103,17 +78,14 @@ export class SearchForm extends Component {
         });
       }
     );
-    // console.log("loading true?", this.state.loading);
   };
 
   handleSubmit = event => {
     event.preventDefault();
     this.searchPrice(this.state);
-    console.log("search is on");
   };
 
   componentDidMount() {
-    // console.log("mounting search form");
     if (this.props.location.state) {
       this.searchPrice(this.props.location.state);
       window.history.pushState(null, "");
@@ -184,7 +156,6 @@ export class SearchForm extends Component {
           savedJourney: response.data
         });
         this.props.setFavorites(this.state.savedJourney);
-        console.log("journey detail in searchform:", this.state.savedJourney);
       });
   };
 
@@ -202,11 +173,9 @@ export class SearchForm extends Component {
     newSearch.date = e.target.value.slice(0, 16);
     this.searchPrice(newSearch);
     window.history.pushState(null, "");
-    console.log("log after", this.state.date);
   };
 
   render() {
-    //console.log("HI", this.props.location.state);
     return (
       <div>
         <div className="Searchform">
@@ -242,7 +211,6 @@ export class SearchForm extends Component {
             id="date"
             name="date"
             value={this.state.date}
-            // defaultValue={this.state.date}
             onChange={this.handleChange}
           />
           <br />

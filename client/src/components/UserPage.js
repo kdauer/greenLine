@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class UserPage extends Component {
-  // searchFavorite = e => {
-  //   e.preventDefault();
-
-  // };
-
   orderedDate = str => {
     const hour = str.slice(11, 16);
     const date = new Date(str).toDateString();

@@ -17,7 +17,6 @@ export class ResultList extends Component {
   };
 
   render() {
-    // console.log(this.state.detail);
     const str1 = this.props.detail.legs[0].departure;
     const str2 = this.props.detail.legs[this.props.detail.legs.length - 1]
       .arrival;

@@ -13,7 +13,6 @@ class App extends React.Component {
     user: this.props.user,
     resultListRender: false,
     favorites: this.props.favorites || []
-    //newSearchForm: false
   };
 
   setUser = userObj => {
@@ -25,7 +24,6 @@ class App extends React.Component {
   resetTripResults = () => {
     this.setState({
       resultListRender: false
-      //newSearchForm: true
     });
   };
 
@@ -45,11 +43,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header"> */}
         <Navbar
           setUser={this.setUser}
           user={this.state.user}
-          // setTripResults={this.setTripResults}
           resetTripResults={this.resetTripResults}
         />
         <div>
@@ -87,7 +83,6 @@ class App extends React.Component {
           path="/"
           render={props => (
             <SearchForm
-              // setTripResults={this.setTripResults}
               {...props}
               isLoggedIn={Boolean(this.state.user)}
               resultListSetTrue={this.resultListSetTrue}
@@ -96,17 +91,6 @@ class App extends React.Component {
             />
           )}
         />
-
-        {/* <Route
-          path="/:favoriteId"
-          render={props => (
-            <SearchForm
-              history={props.history}
-              setUser={this.setUser}
-              favorites={props.favorites}
-            />
-          )}
-        /> */}
         <Footer />
       </div>
     );

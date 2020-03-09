@@ -5,7 +5,6 @@ const uuid = require("uuid").v4;
 
 const sortingAllTrips = allTrips => {
   const allTripsInOne = allTrips.flat();
-  // console.log(allTripsInOne.length);
   const uniques = [
     ...new Set(
       allTripsInOne.map(el => JSON.stringify(el.legs.map(ele => ele.line.id)))
@@ -25,13 +24,12 @@ const sortingAllTrips = allTrips => {
   return reducedArray;
 };
 
-let date; // why
+let date;
 let from;
 let to;
 
 router.get("/price", (req, res) => {
   date = req.query.date;
-  // console.log("date format", date);
   from = req.query.fromId;
   to = req.query.toId;
   if (!parseInt(from) > 0 && !parseInt(to) > 0) {
@@ -88,8 +86,6 @@ router.get("/price", (req, res) => {
         });
       });
   } else if (!parseInt(from) > 0 || !parseInt(to) > 0) {
-    // console.log("cities", parseInt(from), to);
-    // console.log("types", typeof from, typeof to);
     var fromArray = [];
     var toArray = [];
     if (isNaN(from) === false) {
@@ -252,7 +248,7 @@ router.get("/firstPrice", (req, res) => {
         let myPromises = [];
         for (let i = 0; i < res[0].length; i++) {
           for (let j = 0; j < res[1].length; j++) {
-            myPromises.push(prices(res[0][i], res[1][j], date, { class: 1 })); // where does date come from
+            myPromises.push(prices(res[0][i], res[1][j], date, { class: 1 }));
           }
         }
         return myPromises;

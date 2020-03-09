@@ -1,5 +1,3 @@
-/* We'll centralize our routes imports to this file to keep our code clean */
-
 const router = require("express").Router();
 const usersRoutes = require("./users");
 const priceRoutes = require("./price");
